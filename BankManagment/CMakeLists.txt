@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
         LoginWindow.cpp
         LoginWindow.h
         LoginWindow.ui
+        Resource.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

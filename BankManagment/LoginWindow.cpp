@@ -31,3 +31,9 @@ void LoginWindow::on_LoginButton_clicked()
     }
 }
 
+//todo: add action with about us
+void LoginWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}
+

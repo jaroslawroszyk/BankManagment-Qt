@@ -14,9 +14,10 @@ class LoginWindow : public QMainWindow
 public:
     LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
-    void centerAndResize();
 private slots:
     void on_LoginButton_clicked();
+
+    void on_actionExit_triggered();
 
 private:
     Ui::LoginWindow *ui;
