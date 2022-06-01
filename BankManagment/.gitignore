@@ -71,3 +71,9 @@ Thumbs.db
 *.dll
 *.exe
 
+
+#others
+BankManagment.pro.user
+CMakeLists.pro.user
+build
+build/
