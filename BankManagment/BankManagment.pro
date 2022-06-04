@@ -10,13 +10,16 @@ CONFIG += c++20
 
 SOURCES += \
     main.cpp \
-    LoginWindow.cpp
+    LoginWindow.cpp \
+    menu.cpp
 
 HEADERS += \
-    LoginWindow.h
+    LoginWindow.h \
+    menu.h
 
 FORMS += \
-    LoginWindow.ui
+    LoginWindow.ui \
+    Menu.ui
 
 RESOURCES += \
     Resource.qrc
