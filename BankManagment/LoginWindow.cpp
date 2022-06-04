@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QDesktopWidget>
+#include "menu.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -21,14 +22,8 @@ bool LoginWindow::loginConnect()
 //    QString path = QCoreApplication::applicationDirPath() + "sql/Login.sql";
     //todo: repair a path of database
     loginDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    loginDatabase.setDatabaseName("/home/jarek/ProjectInQt/BankManagment-Qt/BankManagment/sql/Login.sql"); //or Login.db
-    if(loginDatabase.open())
-    {
-         QMessageBox::information(this,"Login suc","xd");
-        return true;
-    }
-//    return loginDatabase.open() ? true : false;
-    return false;
+    loginDatabase.setDatabaseName("/home/jarek/ProjectInQt/BankManagment-Qt/BankManagment/sql/Login.db"); //or Login.db
+    return loginDatabase.open() ? true : false;
 }
 
 void LoginWindow::loginDissconect()
@@ -50,9 +45,18 @@ void LoginWindow::on_LoginButton_clicked()
     {
         LoginWindow::loginConnect();
         QSqlQuery query;
-//        query.prepare("SELECT * FROM LoginData WHERE login='"+username+"' and password='"+password+"'");
-       query.prepare("Select * from LoginData WHERE login='username' and password='password'");
+        query.prepare("SELECT * FROM LoginData WHERE login='"+username+"' and password='"+password+"'");
         query.exec();
+        if(query.next())
+        {
+            Menu *win=new Menu;
+            this->hide();
+            win->show();
+         }
+         else
+         {
+            QMessageBox::information(this,"Login","Incorrect Login or Passowrd");
+         }
         LoginWindow::loginDissconect();
     }
 }
