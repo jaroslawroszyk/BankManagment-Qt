@@ -22,14 +22,8 @@ bool LoginWindow::loginConnect()
 //    QString path = QCoreApplication::applicationDirPath() + "sql/Login.sql";
     //todo: repair a path of database
     loginDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    loginDatabase.setDatabaseName("/home/jarek/ProjectInQt/BankManagment-Qt/BankManagment/sql/Login.db"); //or Login.db
-    if(loginDatabase.open())
-    {
-         QMessageBox::information(this,"Login suc","xd");
-        return true;
-    }
-//    return loginDatabase.open() ? true : false;
-    return false;
+    loginDatabase.setDatabaseName("/home/jarek/ProjectInQt/BankManagment-Qt/BankManagment/sql/Login.db");
+    return loginDatabase.open() ? true : false;
 }
 
 void LoginWindow::loginDissconect()
