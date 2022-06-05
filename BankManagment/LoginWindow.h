@@ -28,4 +28,5 @@ private:
     QSqlDatabase loginDatabase;
     void showMenuWindow();
     QString pathToDatabase = "./sql/Login.db";
+    void setCurrentWindow();
 };

@@ -10,12 +10,18 @@ LoginWindow::LoginWindow(QWidget *parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
-    this->setFixedSize(300,200);
+    setCurrentWindow();
 }
 
 LoginWindow::~LoginWindow()
 {
     delete ui;
+}
+
+void LoginWindow::setCurrentWindow()
+{
+    this->setFixedSize(300,200);
+    this->setWindowTitle("Authentication");
 }
 
 void LoginWindow::showMenuWindow()
