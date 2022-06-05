@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QDesktopWidget>
-#include "menu.h"
+#include "Menu.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent)

@@ -1,4 +1,5 @@
 #pragma once
+#include "WindowsOptions.h"
 #include <QTabWidget>
 
 namespace Ui
@@ -6,7 +7,7 @@ namespace Ui
 class Menu;
 }
 
-class Menu : public QTabWidget
+class Menu : public QTabWidget, public WindowsOptions
 {
     Q_OBJECT
 
@@ -15,4 +16,5 @@ public:
     ~Menu();
 private:
     Ui::Menu *ui;
+    void setCurrentWindow() override;
 };
