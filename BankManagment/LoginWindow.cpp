@@ -10,6 +10,7 @@ LoginWindow::LoginWindow(QWidget *parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
+    this->setFixedSize(300,200);
 }
 
 LoginWindow::~LoginWindow()
@@ -17,12 +18,17 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+void LoginWindow::showMenuWindow()
+{
+    Menu *win=new Menu;
+    this->hide();
+    win->show();
+}
+
 bool LoginWindow::loginConnect()
 {
-//    QString path = QCoreApplication::applicationDirPath() + "sql/Login.sql";
-    //todo: repair a path of database
     loginDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    loginDatabase.setDatabaseName("/home/jarek/ProjectInQt/BankManagment-Qt/BankManagment/sql/Login.db");
+    loginDatabase.setDatabaseName(pathToDatabase);
     return loginDatabase.open() ? true : false;
 }
 
@@ -49,19 +55,15 @@ void LoginWindow::on_LoginButton_clicked()
         query.exec();
         if(query.next())
         {
-            Menu *win=new Menu;
-            this->hide();
-            win->show();
-         }
-         else
-         {
+            showMenuWindow();
+        }
+        else
+        {
             QMessageBox::information(this,"Login","Incorrect Login or Passowrd");
-         }
+        }
         LoginWindow::loginDissconect();
     }
 }
-
-//todo: add action with about us
 
 void LoginWindow::on_actionExit_triggered()
 {
@@ -78,3 +80,7 @@ void LoginWindow::on_login_password_returnPressed()
     LoginWindow::on_LoginButton_clicked();
 }
 
+void LoginWindow::on_actionAbout_triggered()
+{
+    QMessageBox::warning(this,"Jarus","Author name: Jaroslaw\nDev name: Jaroslaw");
+}
