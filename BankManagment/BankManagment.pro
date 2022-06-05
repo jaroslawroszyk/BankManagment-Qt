@@ -23,6 +23,11 @@ FORMS += \
 
 RESOURCES += \
     Resource.qrc
+
+OTHER_FILES += \
+    Login.db
+
+DESTDIR = $$PWD
 # Default rules for deployment.
 qnx: target.path = /BankManagment/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

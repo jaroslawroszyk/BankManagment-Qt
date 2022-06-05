@@ -1,6 +1,4 @@
-#ifndef MENU_H
-#define MENU_H
-
+#pragma once
 #include <QTabWidget>
 
 namespace Ui
@@ -18,5 +16,3 @@ public:
 private:
     Ui::Menu *ui;
 };
-
-#endif // MENU_H
