@@ -3,11 +3,10 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
-#include "WindowsOptions.h"
 
 namespace Ui { class LoginWindow; }
 
-class LoginWindow : public QMainWindow, public WindowsOptions
+class LoginWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -29,5 +28,4 @@ private:
     QSqlDatabase loginDatabase;
     void showMenuWindow();
     QString pathToDatabase = "./sql/Login.db";
-    void setCurrentWindow() override;
 };
