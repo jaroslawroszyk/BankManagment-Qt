@@ -9,13 +9,14 @@ CONFIG += c++20
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Menu.cpp \
     main.cpp \
-    LoginWindow.cpp \
-    menu.cpp
+    LoginWindow.cpp
 
 HEADERS += \
     LoginWindow.h \
-    menu.h
+    Menu.h \
+    WindowsOptions.h
 
 FORMS += \
     LoginWindow.ui \
