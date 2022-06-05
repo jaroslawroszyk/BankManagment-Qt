@@ -6,14 +6,7 @@
 
 namespace Ui { class LoginWindow; }
 
-class Actions
-{
-public:
-    virtual void on_actionExit_triggered() = 0;
-    virtual void on_actionAbout_triggered() = 0;
-};
-
-class LoginWindow : public QMainWindow,Actions
+class LoginWindow : public QMainWindow
 {
     Q_OBJECT
 
