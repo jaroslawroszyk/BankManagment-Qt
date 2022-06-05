@@ -24,8 +24,8 @@ public:
     void loginDissconect();
 
 private slots:
-    void on_actionExit_triggered() override;
-    void on_actionAbout_triggered() override;
+    void on_actionExit_triggered();
+    void on_actionAbout_triggered();
     void on_LoginButton_clicked();
     void on_login_userid_returnPressed();
     void on_login_password_returnPressed();
