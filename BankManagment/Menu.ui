@@ -32,7 +32,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Tab_Account">
      <attribute name="title">
@@ -104,7 +104,7 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QListWidget" name="listWidget_4"/>
+      <widget class="QListWidget" name="listWidget_Raport"/>
       <widget class="QPushButton" name="SelectButton_2">
        <property name="text">
         <string>Select</string>

@@ -14,9 +14,7 @@ public:
     explicit Menu(QWidget *parent = nullptr);
     ~Menu();
 
-private slots:
-    void on_pushButton_clicked();
-
 private:
     Ui::Menu *ui;
+    void addContentInWindow();
 };
