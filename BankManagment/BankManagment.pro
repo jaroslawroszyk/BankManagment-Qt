@@ -15,8 +15,7 @@ SOURCES += \
 
 HEADERS += \
     LoginWindow.h \
-    Menu.h \
-    WindowsOptions.h
+    Menu.h
 
 FORMS += \
     LoginWindow.ui \
