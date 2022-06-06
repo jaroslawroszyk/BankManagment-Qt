@@ -31,8 +31,11 @@
       <height>371</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>1</number>
+    <property name="toolTipDuration">
+     <number>0</number>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
     </property>
     <widget class="QWidget" name="Tab_Account">
      <attribute name="title">

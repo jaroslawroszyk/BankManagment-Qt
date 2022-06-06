@@ -27,4 +27,5 @@ void Menu::addContentInWindow()
     ui->listWidgetForAcc->addItems(tabAccount);
     ui->listWidgetForTran->addItems(tabTransactions);
     ui->listWidget_Raport->addItems(tabReport);
+    ui->MenuWidget->setCurrentIndex(0);
 }
