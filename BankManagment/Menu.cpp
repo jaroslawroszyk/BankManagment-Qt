@@ -1,16 +1,20 @@
 #include "Menu.h"
-#include <QMessageBox>
+#include "ui_Menu.h"
 
 Menu::Menu(QWidget *parent) :
-    QTabWidget(parent)
-
+    QDialog(parent),
+    ui(new Ui::Menu)
 {
-    this->setFixedSize(500,500);
-    this->setWindowTitle("Menu");
+    ui->setupUi(this);
 }
-
 
 Menu::~Menu()
 {
+    delete ui;
+}
+
+void Menu::on_pushButton_clicked()
+{
+    QMessageBox::information(this,"Menu","New Menu");
 }
 
