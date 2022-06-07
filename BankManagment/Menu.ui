@@ -37,6 +37,9 @@
     <property name="tabShape">
      <enum>QTabWidget::Rounded</enum>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="Tab_Account">
      <attribute name="title">
       <string>Account</string>
@@ -54,7 +57,7 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="QListWidget" name="listWidgetForAcc"/>
-      <widget class="QPushButton" name="SelectButton">
+      <widget class="QPushButton" name="Account_Select">
        <property name="text">
         <string>Select</string>
        </property>
@@ -84,7 +87,7 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="QListWidget" name="listWidgetForTran"/>
-      <widget class="QPushButton" name="SelectButton_3">
+      <widget class="QPushButton" name="Transactions_select">
        <property name="text">
         <string>Select</string>
        </property>
@@ -108,7 +111,7 @@
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="QListWidget" name="listWidget_Raport"/>
-      <widget class="QPushButton" name="SelectButton_2">
+      <widget class="QPushButton" name="Raport_select">
        <property name="text">
         <string>Select</string>
        </property>
