@@ -1,0 +1,5 @@
+BankManagment.pro.user
+CMakeLists.pro.user
+build/
+../build-BankManagment-Desktop-Debug/
+./build-BankManagment-Desktop-Debug/
