@@ -47,7 +47,7 @@ void Menu::addContentInWindow()
 
 //}
 
-void Menu::on_Account_Select_clicked()
+void Menu::on_Account_Select_clicked() //potrzebne
 {
     /*
     "1. Open Account"
@@ -65,9 +65,6 @@ void Menu::on_Account_Select_clicked()
     }
 }
 
-//void on_listWidgetForTran_currentTextChanged(const QString &currentText);
-//void on_Transactions_select_clicked();
-
-//void on_listWidget_Raport_currentTextChanged(const QString &currentText);
-//void on_Raport_select_clicked();
+//void on_Transactions_select_clicked(); // need
+//void on_Raport_select_clicked(); // need
 

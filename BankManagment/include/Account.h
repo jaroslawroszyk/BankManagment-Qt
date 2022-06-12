@@ -17,59 +17,60 @@ public:
 
 class Date
 {
-    QDate dates;
+    QDate date;
 public:
-    QDate getdate();
-    void setdate(QDate);
+    QDate getDate();
+    void setDate(QDate);
 };
 
 //Account Class
 
 class Account
 {
-    QString acc_no;
-    QString acc_type;
+    QString accountNumber;
+    QString accountType;
     QString balance;
     bool status;
 public:
-    void setaccount_no(QString);
-    void setaccount_type(QString);
-    void setbalance(QString);
-    bool getstatus();
-    void setstatus(bool);
-    QString getaccount_no();
-    QString getaccount_type();
-    QString getbalance();
+    void setAccountNumber(QString);
+    void setAccountType(QString);
+    void setBalance(QString);
+    bool getStatus();
+    void setStatus(bool);
+    QString getAccountNumber();
+    QString getAccountType();
+    QString getBalance();
 };
 
 //Password class
 
-class Password
-{ // this may be a struct
-    QString pass;
+struct Password
+{
+private:
+    QString accountPassword;
 public:
-    void setpassword(QString);
-    QString getpassword();
+    void setPassword(QString);
+    QString getPassword();
 };
 
 //Personal class
 
 class Personal
 {
-    QString mob_no;
+    QString mobileNumber;
     QString gender;
     QString nationality;
     QString address;
 public:
-    void setmobileno(QString);
-    void setgender(QString);
-    void setaddress(QString);
-    void setnationality(QString);
-    QString getnationality();
-    QString getmobileno();
-    QString getgender();
-    QString getaddress();
-    Date birth;
+    void setMobileNumber(QString);
+    void setGender(QString);
+    void setAddress(QString);
+    void setNationality(QString);
+    QString getNationality();
+    QString getMobileNumber();
+    QString getGender();
+    QString getAddress();
+    Date birthDate;
 };
 
 //Saving Account Class
@@ -78,21 +79,21 @@ class SavingAccount{
 private:
     double rate;
 public:
-    void setrate(double);
-    double getrate();
+    void setRate(double);
+    double getRate();
     Customer name;
     Customer father;
-    Customer grandfather;
     Account saving;
     Personal info;
     Password pin;
-    Date account_created;
+    Date accountCreated;
     Date account_expire;
 };
 
 //Current Account Class
 
-class CurrentAccount{
+class CurrentAccount
+{
 public:
     Customer name;
     Customer father;
@@ -100,8 +101,8 @@ public:
     Account current;
     Personal info;
     Password pin;
-    Date account_created;
-    Date account_expire;
+    Date accountCreated;
+    Date accountExpire;
 };
 
 //Withdraw Data Class
@@ -120,37 +121,41 @@ class DepositData{
 private:
     QString mode;
     QString cheque_no;
-    QString bank_name;
+    QString bankName;
 public:
     Account data;
     Customer holder;
     Customer by;
     Date deposit;
-    void setmode(QString);
-    void setchequeno(QString);
-    void setbankname(QString);
-    QString getmode();
+    void setMode(QString);
+    void setChequeno(QString);
+    void setBankName(QString);
+    QString getMode();
     QString getchequeno();
-    QString getbankname();
+    QString getBankName();
 };
 
 //Single Entry Data
 
 class single_entry_data{
 private:
-    QString acc_no,address,naration,amt,balance;
+    QString accountNumber;
+    QString address;
+    QString naration;
+    QString amt;
+    QString balance;
 public:
     Customer name;
     Date dates;
-    void setacc_no(QString);
-    void setaddress(QString);
+    void setAccountNumber(QString);
+    void setAddress(QString);
     void setnaration(QString);
-    void setamount(QString);
+    void setAmount(QString);
     void setbalance(QString);
-    QString getacc_no();
-    QString getaddress();
-    QString getnaration();
-    QString getamount();
-    QString getbalance();
+    QString getAccountNumber();
+    QString getAddress();
+    QString getNaration();
+    QString getAmount();
+    QString getBalance();
 
 };
