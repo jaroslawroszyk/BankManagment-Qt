@@ -59,7 +59,7 @@ void Menu::on_Account_Select_clicked()
     {
         OpenAccount *winAccount = new OpenAccount;
         winAccount->setdata("Open Account", "Create Account","Back",true);
-        winAccount->setAccountNumber();
+        winAccount->setacc_no();
         this->hide();
         winAccount->show();
     }

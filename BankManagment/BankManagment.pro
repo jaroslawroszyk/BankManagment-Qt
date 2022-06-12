@@ -12,12 +12,14 @@ SOURCES += \
     Menu.cpp \
     OpenAccount.cpp \
     main.cpp \
-    LoginWindow.cpp
+    LoginWindow.cpp \
+    Account.cpp
 
 HEADERS += \
     LoginWindow.h \
     Menu.h \
-    OpenAccount.h
+    OpenAccount.h\
+    Account.h
 
 FORMS += \
     LoginWindow.ui \
