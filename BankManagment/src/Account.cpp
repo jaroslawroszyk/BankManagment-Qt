@@ -1,179 +1,203 @@
 #include "include/Account.h"
 
-//Customer Class Implementation
-
-void Customer::setname(QString n){
+void Customer::setname(QString n)
+{
     name=n;
 }
 
-QString Customer::getname(){
+QString Customer::getname()
+{
     return name;
 }
 
-//Date Class Implementation
-
-QDate Date::getdate(){
-    return dates;
+QDate Date::getDate()
+{
+    return date;
 }
 
-void Date::setdate(QDate k){
-    dates=k;
+void Date::setDate(QDate k)
+{
+    date=k;
 }
 
-
-//Account Class Implementation
-
-void Account::setaccount_no(QString a){
-    acc_no=a;
+void Account::setAccountNumber(QString accNo)
+{
+    accountNumber=accNo;
 }
 
-void Account::setaccount_type(QString b){
-    acc_type=b;
+void Account::setAccountType(QString type)
+{
+    accountType=type;
 }
 
-void Account::setbalance(QString c){
-    balance=c;
+void Account::setBalance(QString bal)
+{
+    balance=bal;
 }
 
-QString Account::getaccount_no(){
-    return acc_no;
+QString Account::getAccountNumber()
+{
+    return accountNumber;
 }
 
-QString Account::getaccount_type(){
-    return acc_type;
+QString Account::getAccountType()
+{
+    return accountType;
 }
 
-QString Account::getbalance(){
+QString Account::getBalance()
+{
     return balance;
 }
 
-bool Account::getstatus(){
+bool Account::getStatus()
+{
     return status;
 }
 
-void Account::setstatus(bool s){
-    status=s;
+void Account::setStatus(bool stat)
+{
+    status=stat;
 }
 
-//Password Class Implementation
-
-void Password::setpassword(QString z){
-    pass=z;
+void Password::setPassword(QString passwd)
+{
+    accountPassword=passwd;
 }
 
-QString Password::getpassword(){
-    return pass;
+QString Password::getPassword()
+{
+    return accountPassword;
 }
 
-//Personal Class Implementation
-
-void Personal::setmobileno(QString a){
-    mob_no=a;
+void Personal::setMobileNumber(QString mobile)
+{
+    mobileNumber=mobile;
 }
 
-void Personal::setgender(QString b){
-    gender=b;
+void Personal::setGender(QString gen)
+{
+    gender=gen;
 }
 
-void Personal::setaddress(QString c){
-    address=c;
+void Personal::setAddress(QString addr)
+{
+    address=addr;
 }
 
-void Personal::setnationality(QString n){
-    nationality=n;
+void Personal::setNationality(QString natio)
+{
+    nationality=natio;
 }
 
-QString Personal::getnationality(){
+QString Personal::getNationality()
+{
     return nationality;
 }
 
-QString Personal::getmobileno(){
-    return mob_no;
+QString Personal::getMobileNumber()
+{
+    return mobileNumber;
 }
 
-QString Personal::getgender(){
+QString Personal::getGender()
+{
     return gender;
 }
 
-QString Personal::getaddress(){
+QString Personal::getAddress()
+{
     return address;
 }
 
-//Saving Account Implementation
-
-void SavingAccount::setrate(double k){
-    rate=k;
+void SavingAccount::setRate(double rat)
+{
+    rate=rat;
 }
 
-double SavingAccount::getrate(){
+double SavingAccount::getRate()
+{
     return rate;
 }
 
-
-//Deposit Data Implementation
-
-void DepositData::setmode(QString a){
-    mode=a;
+void DepositData::setMode(QString mod)
+{
+    mode=mod;
 }
 
-void DepositData::setchequeno(QString b){
+void DepositData::setChequeno(QString b)
+{
     cheque_no=b;
 }
 
-void DepositData::setbankname(QString c){
-    bank_name=c;
+void DepositData::setBankName(QString name)
+{
+    bankName=name;
 }
 
-QString DepositData::getmode(){
+QString DepositData::getMode()
+{
     return mode;
 }
 
-QString DepositData::getchequeno(){
+QString DepositData::getchequeno()
+{
     return cheque_no;
 }
 
-QString DepositData::getbankname(){
-    return bank_name;
+QString DepositData::getBankName()
+{
+    return bankName;
 }
 
 //Single Entry Data Implementation
 
-void single_entry_data::setacc_no(QString a){
-    acc_no=a;
+void single_entry_data::setAccountNumber(QString accNumber)
+{
+    accountNumber=accNumber;
 }
 
-void single_entry_data::setaddress(QString a){
-    address=a;
+void single_entry_data::setAddress(QString adr)
+{
+    address=adr;
 }
 
-void single_entry_data::setnaration(QString n){
-    naration=n;
+void single_entry_data::setnaration(QString nar)
+{
+    naration=nar;
 }
 
-void single_entry_data::setamount(QString a){
-    amt=a;
+void single_entry_data::setAmount(QString amount)
+{
+    amt=amount;
 }
 
-void single_entry_data::setbalance(QString b){
-    balance=b;
+void single_entry_data::setbalance(QString bal)
+{
+    balance=bal;
 }
 
-QString single_entry_data::getacc_no(){
-    return acc_no;
+QString single_entry_data::getAccountNumber()
+{
+    return accountNumber;
 }
 
-QString single_entry_data::getaddress(){
+QString single_entry_data::getAddress()
+{
     return address;
 }
 
-QString single_entry_data::getnaration(){
+QString single_entry_data::getNaration()
+{
     return naration;
 }
 
-QString single_entry_data::getamount(){
+QString single_entry_data::getAmount()
+{
     return amt;
 }
 
-QString single_entry_data::getbalance(){
+QString single_entry_data::getBalance()
+{
     return balance;
 }

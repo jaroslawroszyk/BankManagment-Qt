@@ -2,7 +2,8 @@
 #include <QMessageBox>
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class Menu;
 }
 
@@ -19,13 +20,8 @@ private slots:
 //    void on_listWidgetForAcc_entered(const QModelIndex &index);
     void on_Account_Select_clicked();
 
-//    void on_listWidgetForTran_currentTextChanged(const QString &currentText);
-//    void on_Transactions_select_clicked();
-
-//    void on_listWidget_Raport_currentTextChanged(const QString &currentText);
-//    void on_Raport_select_clicked();
-
-
+//    void on_Transactions_select_clicked(); //need
+//    void on_Raport_select_clicked(); //need
 
 private:
     Ui::Menu *ui;

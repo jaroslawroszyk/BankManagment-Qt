@@ -4,19 +4,22 @@
 #include <QMessageBox>
 
 
-void OpenAccount::setData(QString title,QString button_name,QString name2,bool acc_status){
+void OpenAccount::setData(QString title,QString button_name,QString name2,bool acc_status)
+{
     setWindowTitle(title);
     ui->ao_push->setText(button_name);
     ui->ao_back->setText(name2);
     ui->ao_acc_no->setReadOnly(acc_status);
 }
 
-void OpenAccount::setAccountNumber(){
+void OpenAccount::setAccountNumber()
+{
     ui->ao_acc_no->setText(QString::number(OpenAccount::getAccountNumber()));
     ui->ao_acc_no->setReadOnly(true);
 }
 
-void OpenAccount::setoff(){
+void OpenAccount::setoff()
+{
     ui->ao_type->setDisabled(true);
     ui->ao_name->setReadOnly(true);
     ui->ao_dob->setReadOnly(true);
@@ -27,7 +30,8 @@ void OpenAccount::setoff(){
     ui->ao_fname->setReadOnly(true);
 }
 
-void OpenAccount::seton(){
+void OpenAccount::seton()
+{
     ui->ao_name->setReadOnly(false);
     ui->ao_dob->setReadOnly(false);
     ui->ao_gender->setDisabled(false);
@@ -53,9 +57,8 @@ OpenAccount::~OpenAccount()
     delete ui;
 }
 
-//Load Data To dialog Box
-
-void OpenAccount::loadData(QString acc_no){
+void OpenAccount::loadData(QString acc_no)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     query.prepare("Select [Account Number],[Account Type],[Name],[Date of Birth],[Gender],[Mobile No],[Nationality],[Address],"
@@ -81,9 +84,8 @@ void OpenAccount::loadData(QString acc_no){
     OpenAccount::Disconnect();
 }
 
-//Check Account No
-
-bool OpenAccount::checkAccountNumber(int acc_no){
+bool OpenAccount::checkAccountNumber(int acc_no)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     query.prepare("SELECT * FROM account WHERE [Account Number]='"+QString::number(acc_no)+"'");
@@ -96,9 +98,8 @@ bool OpenAccount::checkAccountNumber(int acc_no){
     return true;
 }
 
-//Get Account No
-
-int OpenAccount::getAccountNumber(){
+int OpenAccount::getAccountNumber()
+{
     int acc_no=0;
     OpenAccount::Connect();
     QSqlQuery query;
@@ -109,9 +110,9 @@ int OpenAccount::getAccountNumber(){
     }
     return  acc_no+1;
 }
-//Get Rate
 
-double OpenAccount::getRate(QString type){
+double OpenAccount::getRate(QString type)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     double rate;
@@ -124,9 +125,8 @@ double OpenAccount::getRate(QString type){
     return rate;
 }
 
-//Clear Data
-
-void OpenAccount::clearData(){
+void OpenAccount::clearData()
+{
     ui->ao_acc_no->clear();
     ui->ao_type->setCurrentIndex(0);
     ui->ao_name->clear();
@@ -136,10 +136,7 @@ void OpenAccount::clearData(){
     ui->ao_nationality->clear();
     ui->ao_address->clear();
     ui->ao_fname->clear();
-//    ui->ao_gfname->clear();
 }
-
-//Account Open Back Button
 
 void OpenAccount::on_ao_back_clicked()
 {
@@ -153,18 +150,16 @@ void OpenAccount::on_ao_back_clicked()
     }
 }
 
-//Account Open Check Null
-
-bool OpenAccount::isNullData(){
+bool OpenAccount::isNullData()
+{
     if(ui->ao_acc_no->text()==NULL || ui->ao_name->text()==NULL || ui->ao_mobno->text()==NULL || ui->ao_nationality->text()==NULL || ui->ao_address->text()==NULL || ui->ao_fname->text()==NULL){
         return true;
     }
     return false;
 }
 
-//DataBase Connection
-
-bool OpenAccount::Connect(){
+bool OpenAccount::Connect()
+{
     mydb=QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName(pathToDatabase);
     if(mydb.open()){
@@ -175,48 +170,47 @@ bool OpenAccount::Connect(){
     }
 }
 
-//DataBase Disconnect
-
-void OpenAccount::Disconnect(){
+void OpenAccount::Disconnect()
+{
     mydb.close();
     mydb.removeDatabase(QSqlDatabase::defaultConnection);
 }
 
-SavingAccount OpenAccount::getUpdateData(){
+SavingAccount OpenAccount::getUpdateData()
+{
     SavingAccount acc;
-    acc.saving.setaccount_no(ui->ao_acc_no->text());
-    acc.saving.setaccount_type(ui->ao_type->currentText());
+    acc.saving.setAccountNumber(ui->ao_acc_no->text());
+    acc.saving.setAccountType(ui->ao_type->currentText());
     acc.name.setname(ui->ao_name->text());
-    acc.info.birth.setdate(ui->ao_dob->date());
+    acc.info.birthDate.setDate(ui->ao_dob->date());
     if(ui->ao_male->isChecked()){
-        acc.info.setgender("Male");
+        acc.info.setGender("Male");
     }
     else{
-        acc.info.setgender("Female");
+        acc.info.setGender("Female");
     }
-    acc.info.setmobileno(ui->ao_mobno->text());
-    acc.info.setnationality(ui->ao_nationality->text());
-    acc.info.setaddress(ui->ao_address->text());
+    acc.info.setMobileNumber(ui->ao_mobno->text());
+    acc.info.setNationality(ui->ao_nationality->text());
+    acc.info.setAddress(ui->ao_address->text());
     acc.father.setname(ui->ao_fname->text());
-//    acc.grandfather.setname(ui->ao_gfname->text());
     return acc;
 }
 
 //Update Data
 
-bool OpenAccount::updateData(SavingAccount k){
+bool OpenAccount::updateData(SavingAccount k)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     query.prepare("UPDATE account SET [Name]=:name,[Date of Birth]=:dob,[Gender]=:gender,[Mobile No]=:mob,[Nationality]=:nationality,[Address]=:address,"
-                  "[Father Name]=:fname WHERE [Account Number]='"+k.saving.getaccount_no()+"'");
+                  "[Father Name]=:fname WHERE [Account Number]='"+k.saving.getAccountNumber()+"'");
     query.bindValue(":name",k.name.getname());
-    query.bindValue(":dob",k.info.birth.getdate());
-    query.bindValue(":gender",k.info.getgender());
-    query.bindValue(":mob",k.info.getmobileno());
-    query.bindValue(":nationality",k.info.getnationality());
-    query.bindValue(":address",k.info.getaddress());
+    query.bindValue(":dob",k.info.birthDate.getDate());
+    query.bindValue(":gender",k.info.getGender());
+    query.bindValue(":mob",k.info.getMobileNumber());
+    query.bindValue(":nationality",k.info.getNationality());
+    query.bindValue(":address",k.info.getAddress());
     query.bindValue(":fname",k.father.getname());
-//    query.bindValue(":gfname",k.grandfather.getname());
     if(query.exec()){
         OpenAccount::Disconnect();
         return true;
@@ -225,79 +219,75 @@ bool OpenAccount::updateData(SavingAccount k){
     return false;
 }
 
-//Get Saving Account Data
-
-SavingAccount OpenAccount::getSavingData(){
+SavingAccount OpenAccount::getSavingData()
+{
     SavingAccount acc;
-    acc.saving.setaccount_no(ui->ao_acc_no->text());
-    acc.saving.setaccount_type(ui->ao_type->currentText());
+    acc.saving.setAccountNumber(ui->ao_acc_no->text());
+    acc.saving.setAccountType(ui->ao_type->currentText());
     acc.name.setname(ui->ao_name->text());
-    acc.info.birth.setdate(ui->ao_dob->date());
+    acc.info.birthDate.setDate(ui->ao_dob->date());
     if(ui->ao_male->isChecked()){
-        acc.info.setgender("Male");
+        acc.info.setGender("Male");
     }
     else{
-        acc.info.setgender("Female");
+        acc.info.setGender("Female");
     }
-    acc.info.setmobileno(ui->ao_mobno->text());
-    acc.info.setnationality(ui->ao_nationality->text());
-    acc.info.setaddress(ui->ao_address->text());
+    acc.info.setMobileNumber(ui->ao_mobno->text());
+    acc.info.setNationality(ui->ao_nationality->text());
+    acc.info.setAddress(ui->ao_address->text());
     acc.father.setname(ui->ao_fname->text());
-//    acc.grandfather.setname(ui->ao_gfname->text());
-    acc.saving.setstatus(true);
-    acc.account_created.setdate(QDate::currentDate());
-    acc.setrate(OpenAccount::getRate("Saving"));
-    acc.saving.setbalance("0");
+    acc.saving.setStatus(true);
+    acc.accountCreated.setDate(QDate::currentDate());
+    acc.setRate(OpenAccount::getRate("Saving"));
+    acc.saving.setBalance("0");
     return acc;
 }
 
-//Get Current Account Data
-
-CurrentAccount OpenAccount::getCurrentData(){
+CurrentAccount OpenAccount::getCurrentData()
+{
     CurrentAccount acc;
-    acc.current.setaccount_no(ui->ao_acc_no->text());
-    acc.current.setaccount_type(ui->ao_type->currentText());
+    acc.current.setAccountNumber(ui->ao_acc_no->text());
+    acc.current.setAccountType(ui->ao_type->currentText());
     acc.name.setname(ui->ao_name->text());
-    acc.info.birth.setdate(ui->ao_dob->date());
+    acc.info.birthDate.setDate(ui->ao_dob->date());
     if(ui->ao_male->isChecked()){
-        acc.info.setgender("Male");
+        acc.info.setGender("Male");
     }
     else{
-        acc.info.setgender("Female");
+        acc.info.setGender("Female");
     }
-    acc.info.setmobileno(ui->ao_mobno->text());
-    acc.info.setnationality(ui->ao_nationality->text());
-    acc.info.setaddress(ui->ao_address->text());
+    acc.info.setMobileNumber(ui->ao_mobno->text());
+    acc.info.setNationality(ui->ao_nationality->text());
+    acc.info.setAddress(ui->ao_address->text());
     acc.father.setname(ui->ao_fname->text());
-//    acc.grandfather.setname(ui->ao_gfname->text());
-    acc.current.setstatus(true);
-    acc.account_created.setdate(QDate::currentDate());
-    acc.current.setbalance("0");
+    acc.current.setStatus(true);
+    acc.accountCreated.setDate(QDate::currentDate());
+    acc.current.setBalance("0");
     return acc;
 }
 
 //Saving Account Data to Database
 
-void OpenAccount::sendToSavingAccountDb(SavingAccount k){
+void OpenAccount::sendToSavingAccountDb(SavingAccount k)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     query.prepare("INSERT INTO account ([Account Number],[Account Type],[Name],[Date of Birth],[Gender],[Mobile Number],"
                   "[Nationality],[Address],[Father Name],[Status],[Account Created],[Rate],[Balance],[Account Created Time])"
                   "VALUES(:acc_no,:type,:name,:dob,:gender,:mob_no,:nationality,:address,:fname,:status,:acc_created,:rate,:blnc,:time)");
-    query.bindValue(":acc_no",k.saving.getaccount_no());
-    query.bindValue(":type",k.saving.getaccount_type());
+    query.bindValue(":acc_no",k.saving.getAccountNumber());
+    query.bindValue(":type",k.saving.getAccountType());
     query.bindValue(":name",k.name.getname());
-    query.bindValue(":dob",k.info.birth.getdate());
-    query.bindValue(":gender",k.info.getgender());
-    query.bindValue(":mob_no",k.info.getmobileno());
-    query.bindValue(":nationality",k.info.getnationality());
-    query.bindValue(":address",k.info.getaddress());
+    query.bindValue(":dob",k.info.birthDate.getDate());
+    query.bindValue(":gender",k.info.getGender());
+    query.bindValue(":mob_no",k.info.getMobileNumber());
+    query.bindValue(":nationality",k.info.getNationality());
+    query.bindValue(":address",k.info.getAddress());
     query.bindValue(":fname",k.father.getname());
-//    query.bindValue(":gfname",k.grandfather.getname());
-    query.bindValue(":status",k.saving.getstatus());
-    query.bindValue(":acc_created",k.account_created.getdate());
-    query.bindValue(":rate",k.getrate());
-    query.bindValue(":blnc",k.saving.getbalance());
+    query.bindValue(":status",k.saving.getStatus());
+    query.bindValue(":acc_created",k.accountCreated.getDate());
+    query.bindValue(":rate",k.getRate());
+    query.bindValue(":blnc",k.saving.getBalance());
     query.bindValue(":time",QTime::currentTime());
     if(query.exec()){
         QMessageBox::information(this,"Account","Account Was Created Successfully");
@@ -308,27 +298,25 @@ void OpenAccount::sendToSavingAccountDb(SavingAccount k){
     return;
 }
 
-//Current Account To Database
-
-void OpenAccount::sendToCurrentAccountDb(CurrentAccount k){
+void OpenAccount::sendToCurrentAccountDb(CurrentAccount k)
+{
     OpenAccount::Connect();
     QSqlQuery query;
     query.prepare("INSERT INTO account ([Account Number],[Account Type],[Name],[Date of Birth],[Gender],[Mobile Number],"
                   "[Nationality],[Address],[Father Name],[Status],[Account Created],[Rate],[Balance],[Account Created Time])"
                   "VALUES(:acc_no,:type,:name,:dob,:gender,:mob_no,:nationality,:address,:fname,:status,:acc_created,:rate,:blnc,:time)");
-    query.bindValue(":acc_no",k.current.getaccount_no());
-    query.bindValue(":type",k.current.getaccount_type());
+    query.bindValue(":acc_no",k.current.getAccountNumber());
+    query.bindValue(":type",k.current.getAccountType());
     query.bindValue(":name",k.name.getname());
-    query.bindValue(":dob",k.info.birth.getdate());
-    query.bindValue(":gender",k.info.getgender());
-    query.bindValue(":mob_no",k.info.getmobileno());
-    query.bindValue(":nationality",k.info.getnationality());
-    query.bindValue(":address",k.info.getaddress());
+    query.bindValue(":dob",k.info.birthDate.getDate());
+    query.bindValue(":gender",k.info.getGender());
+    query.bindValue(":mob_no",k.info.getMobileNumber());
+    query.bindValue(":nationality",k.info.getNationality());
+    query.bindValue(":address",k.info.getAddress());
     query.bindValue(":fname",k.father.getname());
-//    query.bindValue(":gfname",k.grandfather.getname());
-    query.bindValue(":status",k.current.getstatus());
-    query.bindValue(":acc_created",k.account_created.getdate());
-    query.bindValue(":blnc",k.current.getbalance());
+    query.bindValue(":status",k.current.getStatus());
+    query.bindValue(":acc_created",k.accountCreated.getDate());
+    query.bindValue(":blnc",k.current.getBalance());
     query.bindValue(":time",QTime::currentTime());
     if(query.exec()){
         QMessageBox::information(this,"Account","Account Was Created Successfully");
@@ -342,16 +330,19 @@ void OpenAccount::sendToCurrentAccountDb(CurrentAccount k){
 
 void OpenAccount::on_ao_push_clicked()
 {
-    if(ui->ao_push->text()=="Create Account"){
+    if(ui->ao_push->text()=="Create Account")
+    {
         if(OpenAccount::isNullData()){
             QMessageBox::warning(this,"Account","Please Enter All The Information!!");
         }
         else{
-            if(ui->ao_type->currentText()=="Saving"){
+            if(ui->ao_type->currentText()=="Saving")
+            {
                 SavingAccount k=OpenAccount::getSavingData();
                 OpenAccount::sendToSavingAccountDb(k);
             }
-            else{
+            else
+            {
                 CurrentAccount k=OpenAccount::getCurrentData();
                 OpenAccount::sendToCurrentAccountDb(k);
             }
@@ -359,12 +350,15 @@ void OpenAccount::on_ao_push_clicked()
         }
     }
     else{
-        if(OpenAccount::isNullData()){
+        if(OpenAccount::isNullData())
+        {
             QMessageBox::warning(this,"Account","Please Enter All The Information!!");
         }
-        else{
+        else
+        {
             SavingAccount k=OpenAccount::getUpdateData();
-            if(OpenAccount::updateData(k)){
+            if(OpenAccount::updateData(k))
+            {
                 QMessageBox::information(this,"Account","Account Updated!!");
                 OpenAccount::clearData();
                 OpenAccount::setoff();
