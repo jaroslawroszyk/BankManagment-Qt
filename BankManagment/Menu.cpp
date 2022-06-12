@@ -58,8 +58,8 @@ void Menu::on_Account_Select_clicked()
     if(selected == "1. Open Account")
     {
         OpenAccount *winAccount = new OpenAccount;
-        winAccount->setdata("Open Account", "Create Account","Back",true);
-        winAccount->setacc_no();
+        winAccount->setData("Open Account", "Create Account","Back",true);
+        winAccount->setAccountNumber();
         this->hide();
         winAccount->show();
     }

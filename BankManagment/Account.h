@@ -1,12 +1,12 @@
-#ifndef ACCOUNT_H
-#define ACCOUNT_H
+#pragma once
 
 #include <QString>
 #include <QDate>
 
 //Customer Class
 
-class customer{
+class Customer
+{
     QString name;
 public:
     void setname(QString);
@@ -15,7 +15,8 @@ public:
 
 //Date Class
 
-class date{
+class Date
+{
     QDate dates;
 public:
     QDate getdate();
@@ -24,7 +25,8 @@ public:
 
 //Account Class
 
-class account{
+class Account
+{
     QString acc_no;
     QString acc_type;
     QString balance;
@@ -42,7 +44,8 @@ public:
 
 //Password class
 
-class password{
+class Password
+{ // this may be a struct
     QString pass;
 public:
     void setpassword(QString);
@@ -51,7 +54,8 @@ public:
 
 //Personal class
 
-class personal{
+class Personal
+{
     QString mob_no;
     QString gender;
     QString nationality;
@@ -65,63 +69,63 @@ public:
     QString getmobileno();
     QString getgender();
     QString getaddress();
-    date birth;
+    Date birth;
 };
 
 //Saving Account Class
 
-class saving_account{
+class SavingAccount{
 private:
     double rate;
 public:
     void setrate(double);
     double getrate();
-    customer name;
-    customer father;
-    customer grandfather;
-    account saving;
-    personal info;
-    password pin;
-    date account_created;
-    date account_expire;
+    Customer name;
+    Customer father;
+    Customer grandfather;
+    Account saving;
+    Personal info;
+    Password pin;
+    Date account_created;
+    Date account_expire;
 };
 
 //Current Account Class
 
-class current_account{
+class CurrentAccount{
 public:
-    customer name;
-    customer father;
-    customer grandfather;
-    account current;
-    personal info;
-    password pin;
-    date account_created;
-    date account_expire;
+    Customer name;
+    Customer father;
+    Customer grandfather;
+    Account current;
+    Personal info;
+    Password pin;
+    Date account_created;
+    Date account_expire;
 };
 
 //Withdraw Data Class
 
-class withdraw_data{
+class WithdrawData{
 public:
-    customer name;
-    date withdraw;
-    password pin;
-    account data;
+    Customer name;
+    Date withdraw;
+    Password pin;
+    Account data;
 };
 
 //Deposit Data Class
 
-class deposit_data{
+class DepositData{
 private:
     QString mode;
     QString cheque_no;
     QString bank_name;
 public:
-    account data;
-    customer holder;
-    customer by;
-    date deposit;
+    Account data;
+    Customer holder;
+    Customer by;
+    Date deposit;
     void setmode(QString);
     void setchequeno(QString);
     void setbankname(QString);
@@ -136,8 +140,8 @@ class single_entry_data{
 private:
     QString acc_no,address,naration,amt,balance;
 public:
-    customer name;
-    date dates;
+    Customer name;
+    Date dates;
     void setacc_no(QString);
     void setaddress(QString);
     void setnaration(QString);
@@ -150,5 +154,3 @@ public:
     QString getbalance();
 
 };
-
-#endif // ACCOUNT_H
