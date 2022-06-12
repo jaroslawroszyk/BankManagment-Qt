@@ -9,28 +9,26 @@ CONFIG += c++20
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Menu.cpp \
-    OpenAccount.cpp \
-    main.cpp \
-    LoginWindow.cpp \
-    Account.cpp
+    src/Menu.cpp \
+    src/OpenAccount.cpp \
+    src/main.cpp \
+    src/LoginWindow.cpp \
+    src/Account.cpp
 
 HEADERS += \
-    LoginWindow.h \
-    Menu.h \
-    OpenAccount.h\
-    Account.h
+    include/LoginWindow.h \
+    include/Menu.h \
+    include/OpenAccount.h\
+    include/Account.h
 
 FORMS += \
-    LoginWindow.ui \
-    Menu.ui \
-    OpenAccount.ui
+    Ui/LoginWindow.ui \
+    Ui/LoginWindow.ui \
+    Ui/Menu.ui \
+    Ui/OpenAccount.ui
 
 RESOURCES += \
     Resource.qrc
-
-OTHER_FILES += \
-    Login.db
 
 DESTDIR = $$PWD
 # Default rules for deployment.

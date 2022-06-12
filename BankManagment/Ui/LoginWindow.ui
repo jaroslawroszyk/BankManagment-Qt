@@ -113,7 +113,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="Resource.qrc">
+    <iconset resource="../Resource.qrc">
      <normaloff>:/img/exit.png</normaloff>:/img/exit.png</iconset>
    </property>
    <property name="text">
@@ -127,7 +127,7 @@
   </action>
  </widget>
  <resources>
-  <include location="Resource.qrc"/>
+  <include location="../Resource.qrc"/>
  </resources>
  <connections/>
 </ui>
