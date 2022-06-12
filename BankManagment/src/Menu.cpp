@@ -1,6 +1,6 @@
-#include "Menu.h"
+#include "include/Menu.h"
 #include "ui_Menu.h"
-#include "OpenAccount.h"
+#include "include/OpenAccount.h"
 #include <QMessageBox>
 #include <QTabWidget>
 

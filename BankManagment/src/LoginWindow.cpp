@@ -1,9 +1,9 @@
 #include "./ui_LoginWindow.h"
-#include "LoginWindow.h"
+#include "include/LoginWindow.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <QDesktopWidget>
-#include "Menu.h"
+#include "include/Menu.h"
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QMainWindow(parent)

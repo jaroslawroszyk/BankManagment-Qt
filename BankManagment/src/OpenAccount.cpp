@@ -1,6 +1,6 @@
-#include "OpenAccount.h"
+#include "include/OpenAccount.h"
 #include "ui_OpenAccount.h"
-#include "Menu.h"
+#include "include/Menu.h"
 #include <QMessageBox>
 
 
